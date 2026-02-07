@@ -1,0 +1,12 @@
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -r requirements.txt"
+
+[deploy]
+startCommand = "gunicorn app:app"
+healthcheckPath = "/api/health"
+restartPolicyType = "ON_FAILURE"  # ✅ CORRECT FORMAT
+
+[[services]]
+name = "api"
+port = 8000
